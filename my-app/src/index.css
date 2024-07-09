@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  body{
+    font-family: "Open Sans", sans-serif; ;
+    @apply text-base box-border
+  }
+  .imageCover{
+    @apply w-full h-full object-cover
+  }
+}
