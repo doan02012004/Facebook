@@ -10,7 +10,7 @@ const useAddFriend = () => {
     const queryClient = useQueryClient()
 
     const mutation = useMutation({
-        mutationKey:['STATUSFRIEND'],
+        mutationKey:['ADDFRIEND'],
         mutationFn: async(data:{request:string|number|undefined, reciepient: string|number|undefined})=>{
             try {
                 const res = await fetch(`http://localhost:3001/friends/addfriend`,{
@@ -23,7 +23,6 @@ const useAddFriend = () => {
                 const result = await res.json()
                if(result){
                 socket.current.emit('addfriend', result)
-                console.log('Đã gửi')
                }
                 return result
             } catch (error) {

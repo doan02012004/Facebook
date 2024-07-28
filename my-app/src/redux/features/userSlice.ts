@@ -24,11 +24,18 @@ export const userSlice = createSlice({
         },
         setFriendsPending:(state, action)=>{
             state.friendsPending = action.payload
-        }
+        },
+        removeFriendsPending: (state, action)=>{
+                state.friendsPending = state.friendsPending.filter((friendPending:Ifriend)=> friendPending._id !== action.payload._id)
+        },
+        addFriendPending: (state, action)=>{
+            state.friendsPending = [...state.friendsPending, action.payload]
+        },
+    
         
     }
 
 })
-export const { login, setActiveUser,setFriendsPending } = userSlice.actions
+export const { login, setActiveUser,setFriendsPending,removeFriendsPending,addFriendPending } = userSlice.actions
 
 export default userSlice.reducer

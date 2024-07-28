@@ -14,7 +14,6 @@ const fetchListFriendPending = async(userId:string|number|undefined)=>{
 }
 
 const useListFriendPQuery = (id:string|number|undefined) => {
-    
     const query = useQuery({
         queryKey:['FRIENDPENDING',id],
         queryFn: ()=> fetchListFriendPending(id)

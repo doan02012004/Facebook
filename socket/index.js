@@ -48,4 +48,11 @@ io.on("connection", (socket)=>{
             io.to(user.socketId).emit('getNewFriend',data)
         }
     })
+    socket.on('updateStatusFriend', (data)=>{
+        const user = activeUsers.find((user)=>user._id == data.friendId)
+        if(user){
+            io.to(user.socketId).emit('getNewFriend',data.friend)
+            console.log(user)
+        }
+    })
 })

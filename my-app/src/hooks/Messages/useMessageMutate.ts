@@ -13,7 +13,7 @@ const useMessageMutate = (myFriend:Iuser) => {
    // eslint-disable-next-line @typescript-eslint/no-explicit-any
    const socket:any = useContext(SocketContext)
     const mutation = useMutation({
-        mutationKey:['MESSAGE'],
+        mutationKey:['MESSAGE',myFriend],
         mutationFn: async(option:{chat:Ichat|null ,chatId:string|number,text:string})=>{
             const newMessage = {
                 chatId: option.chatId,

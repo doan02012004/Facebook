@@ -30,14 +30,12 @@ const ChatBox = ({ chat }:ChatBoxProp) => {
     useEffect(()=>{
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         socket.current.on('getMessage',(messageSocket:any)=>{
-            console.log(messageSocket)
             if(chat._id == messageSocket.chatId){
                 setLastMessage(messageSocket)
               
             }
         })
     },[socket])
-    console.log(lastMessage)
     return (
         <span className='cursor-pointer flex items-center gap-x-3 mb-3 px-2 py-1 hover:bg-slate-200  rounded-xl'>
             <div className='size-14 rounded-full overflow-hidden'>

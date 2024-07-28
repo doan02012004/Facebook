@@ -58,7 +58,7 @@ const getOneFriend = async(req,res)=>{
     const requester = req.params.requesterId
     const recipient = req.params.recipientId
     try {
-        const listFriendAcp = await FriendModel.findOne({members:{$all:[requester,recipient]}, status:'pending'})
+        const listFriendAcp = await FriendModel.findOne({members:{$all:[requester,recipient]}})
         return res.status(200).json(listFriendAcp)
     } catch (error) {
         return res.status(500).json({
@@ -67,11 +67,12 @@ const getOneFriend = async(req,res)=>{
     }
 }
 
-const AcceptedFriend = async(req,res)=>{
-    const id = req.body.friendId
+const updateStatusFriend = async(req,res)=>{
+    const id = req.body.id
+    const status = req.body.status
     try {
         const friendAcp = await FriendModel.findByIdAndUpdate({_id:id},{
-            status:'accepted'
+            status:status
         },{
             new:true
         })
@@ -88,5 +89,5 @@ module.exports = {
     add_friend,
     getFriendsAcp,
     getOneFriend,
-    AcceptedFriend
+    updateStatusFriend
 }
